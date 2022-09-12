@@ -33,3 +33,13 @@
 [data-md-color-scheme="slate"] {
     --md-typeset-a-color: rgb(28, 152, 152)
 }
+
+.copyMe {
+	cursor: pointer;
+	border-bottom: 0.1px dashed black;
+}
+
+p > code,
+li > code {
+	font-weight: bold
+}
