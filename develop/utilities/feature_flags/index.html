@@ -13,7 +13,7 @@
       
       
       <link rel="icon" href="../../media/aws-logo-light.svg">
-      <meta name="generator" content="mkdocs-1.3.1, mkdocs-material-8.5.0">
+      <meta name="generator" content="mkdocs-1.4.1, mkdocs-material-8.5.7">
     
     
       
@@ -21,7 +21,7 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.2e8b5541.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.20d9efc8.min.css">
       
         
         <link rel="stylesheet" href="../../assets/stylesheets/palette.cbb835fc.min.css">
@@ -78,17 +78,6 @@
       
     </div>
     <div data-md-component="announce">
-      
-        <aside class="md-banner">
-          <div class="md-banner__inner md-grid md-typeset">
-            
-            
-  👋 Powertools for Python v2 is coming soon!
-  We encourage you to add your feedback and follow the progress on <a href="https://github.com/awslabs/aws-lambda-powertools-python/issues/1459">the RFC</a>.
-
-          </div>
-          
-        </aside>
       
     </div>
     
@@ -336,13 +325,43 @@
   
   
   
+    <li class="md-nav__item">
+      <a href="../../upgrade/" class="md-nav__link">
+        Upgrade guide
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../we_made_this/" class="md-nav__link">
+        We Made This (Community)
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
     
       
     
     <li class="md-nav__item md-nav__item--section md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" data-md-toggle="__nav_6" type="checkbox" id="__nav_6" checked>
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" data-md-toggle="__nav_8" type="checkbox" id="__nav_8" checked>
       
       
       
@@ -357,13 +376,13 @@
         
       
       
-        <label class="md-nav__link" for="__nav_6">
+        <label class="md-nav__link" for="__nav_8">
           Core utilities
           <span class="md-nav__icon md-icon"></span>
         </label>
       
       <nav class="md-nav" aria-label="Core utilities" data-md-level="1">
-        <label class="md-nav__title" for="__nav_6">
+        <label class="md-nav__title" for="__nav_8">
           <span class="md-nav__icon md-icon"></span>
           Core utilities
         </label>
@@ -420,7 +439,7 @@
     <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" data-md-toggle="__nav_6_4" type="checkbox" id="__nav_6_4" checked>
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" data-md-toggle="__nav_8_4" type="checkbox" id="__nav_8_4" checked>
       
       
       
@@ -431,13 +450,13 @@
         
       
       
-        <label class="md-nav__link" for="__nav_6_4">
+        <label class="md-nav__link" for="__nav_8_4">
           Event Handler
           <span class="md-nav__icon md-icon"></span>
         </label>
       
       <nav class="md-nav" aria-label="Event Handler" data-md-level="2">
-        <label class="md-nav__title" for="__nav_6_4">
+        <label class="md-nav__title" for="__nav_8_4">
           <span class="md-nav__icon md-icon"></span>
           Event Handler
         </label>
@@ -499,7 +518,7 @@
     <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7" type="checkbox" id="__nav_7" checked>
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_9" type="checkbox" id="__nav_9" checked>
       
       
       
@@ -528,13 +547,13 @@
         
       
       
-        <label class="md-nav__link" for="__nav_7">
+        <label class="md-nav__link" for="__nav_9">
           Utilities
           <span class="md-nav__icon md-icon"></span>
         </label>
       
       <nav class="md-nav" aria-label="Utilities" data-md-level="1">
-        <label class="md-nav__title" for="__nav_7">
+        <label class="md-nav__title" for="__nav_9">
           <span class="md-nav__icon md-icon"></span>
           Utilities
         </label>
@@ -631,7 +650,7 @@
   
     <li class="md-nav__item">
       <a href="../parser/" class="md-nav__link">
-        Parser
+        Parser (Pydantic)
       </a>
     </li>
   
@@ -1158,11 +1177,11 @@
 
   <h1>Feature flags</h1>
 
-<details class="note" open="open">
-<summary>Note</summary>
-<p>This is currently in Beta, as we might change Store parameters in the next release.</p>
-</details>
 <p>The feature flags utility provides a simple rule engine to define when one or multiple features should be enabled depending on the input.</p>
+<details class="info" open="open">
+<summary>Info</summary>
+<p>We currently only support AppConfig using <a href="https://docs.aws.amazon.com/appconfig/latest/userguide/appconfig-creating-configuration-and-profile.html#appconfig-creating-configuration-and-profile-free-form-configurations">freeform configuration profile</a>.</p>
+</details>
 <h2 id="terminology">Terminology<a class="headerlink" href="#terminology" title="Permanent link">&para;</a></h2>
 <p>Feature flags are used to modify behaviour without changing the application's code. These flags can be <strong>static</strong> or <strong>dynamic</strong>.</p>
 <p><strong>Static flags</strong>. Indicates something is simply <code>on</code> or <code>off</code>, for example <code>TRACER_ENABLED=True</code>.</p>
@@ -1181,6 +1200,10 @@
 <li><a href="https://isenberg-ran.medium.com/aws-lambda-feature-toggles-made-simple-580b0c444233">AWS Lambda Feature Toggles Made Simple - Ran Isenberg</a></li>
 <li><a href="https://www.cloudbees.com/blog/ultimate-feature-flag-guide">Feature Flags Getting Started - CloudBees</a></li>
 </ul>
+<details class="note" open="open">
+<summary>Note</summary>
+<p>AWS AppConfig requires two API calls to fetch configuration for the first time. You can improve latency by consolidating your feature settings in a single <a href="https://docs.aws.amazon.com/appconfig/latest/userguide/appconfig-creating-configuration-and-profile.html">Configuration</a>.</p>
+</details>
 <h2 id="key-features">Key features<a class="headerlink" href="#key-features" title="Permanent link">&para;</a></h2>
 <ul>
 <li>Define simple feature flags to dynamically decide when to enable a feature</li>
@@ -1189,7 +1212,7 @@
 </ul>
 <h2 id="getting-started">Getting started<a class="headerlink" href="#getting-started" title="Permanent link">&para;</a></h2>
 <h3 id="iam-permissions">IAM Permissions<a class="headerlink" href="#iam-permissions" title="Permanent link">&para;</a></h3>
-<p>Your Lambda function must have <code>appconfig:GetConfiguration</code> IAM permission in order to fetch configuration from AWS AppConfig.</p>
+<p>Your Lambda function IAM Role must have <code>appconfig:GetLatestConfiguration</code> and <code>appconfig:StartConfigurationSession</code> IAM permissions before using this feature.</p>
 <h3 id="required-resources">Required resources<a class="headerlink" href="#required-resources" title="Permanent link">&para;</a></h3>
 <p>By default, this utility provides <a href="https://docs.aws.amazon.com/appconfig/latest/userguide/what-is-appconfig.html">AWS AppConfig</a> as a configuration store.</p>
 <p>The following sample infrastructure will be used throughout this documentation:</p>
@@ -2480,7 +2503,7 @@
   <small>
     
       Last update:
-      2022-06-23
+      2022-10-14
     
   </small>
 </div>
@@ -2566,10 +2589,10 @@
       <div class="md-dialog__inner md-typeset"></div>
     </div>
     
-    <script id="__config" type="application/json">{"base": "../..", "features": ["header.autohide", "navigation.sections", "navigation.expand", "navigation.top", "navigation.instant", "navigation.indexes", "navigation.tracking", "content.code.annotate"], "search": "../../assets/javascripts/workers/search.ecf98df9.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "version": {"default": "latest", "provider": "mike"}}</script>
+    <script id="__config" type="application/json">{"base": "../..", "features": ["header.autohide", "navigation.sections", "navigation.expand", "navigation.top", "navigation.instant", "navigation.indexes", "navigation.tracking", "content.code.annotate"], "search": "../../assets/javascripts/workers/search.16e2a7d4.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "version": {"default": "latest", "provider": "mike"}}</script>
     
     
-      <script src="../../assets/javascripts/bundle.48f2be22.min.js"></script>
+      <script src="../../assets/javascripts/bundle.8492ddcf.min.js"></script>
       
         <script src="../../javascript/aws-amplify.min.js"></script>
       

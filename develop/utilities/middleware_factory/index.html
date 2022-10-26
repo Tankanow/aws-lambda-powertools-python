@@ -13,7 +13,7 @@
       
       
       <link rel="icon" href="../../media/aws-logo-light.svg">
-      <meta name="generator" content="mkdocs-1.3.1, mkdocs-material-8.5.0">
+      <meta name="generator" content="mkdocs-1.4.1, mkdocs-material-8.5.7">
     
     
       
@@ -21,7 +21,7 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.2e8b5541.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.20d9efc8.min.css">
       
         
         <link rel="stylesheet" href="../../assets/stylesheets/palette.cbb835fc.min.css">
@@ -78,17 +78,6 @@
       
     </div>
     <div data-md-component="announce">
-      
-        <aside class="md-banner">
-          <div class="md-banner__inner md-grid md-typeset">
-            
-            
-  👋 Powertools for Python v2 is coming soon!
-  We encourage you to add your feedback and follow the progress on <a href="https://github.com/awslabs/aws-lambda-powertools-python/issues/1459">the RFC</a>.
-
-          </div>
-          
-        </aside>
       
     </div>
     
@@ -336,13 +325,43 @@
   
   
   
+    <li class="md-nav__item">
+      <a href="../../upgrade/" class="md-nav__link">
+        Upgrade guide
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../we_made_this/" class="md-nav__link">
+        We Made This (Community)
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
     
       
     
     <li class="md-nav__item md-nav__item--section md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" data-md-toggle="__nav_6" type="checkbox" id="__nav_6" checked>
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" data-md-toggle="__nav_8" type="checkbox" id="__nav_8" checked>
       
       
       
@@ -357,13 +376,13 @@
         
       
       
-        <label class="md-nav__link" for="__nav_6">
+        <label class="md-nav__link" for="__nav_8">
           Core utilities
           <span class="md-nav__icon md-icon"></span>
         </label>
       
       <nav class="md-nav" aria-label="Core utilities" data-md-level="1">
-        <label class="md-nav__title" for="__nav_6">
+        <label class="md-nav__title" for="__nav_8">
           <span class="md-nav__icon md-icon"></span>
           Core utilities
         </label>
@@ -420,7 +439,7 @@
     <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" data-md-toggle="__nav_6_4" type="checkbox" id="__nav_6_4" checked>
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" data-md-toggle="__nav_8_4" type="checkbox" id="__nav_8_4" checked>
       
       
       
@@ -431,13 +450,13 @@
         
       
       
-        <label class="md-nav__link" for="__nav_6_4">
+        <label class="md-nav__link" for="__nav_8_4">
           Event Handler
           <span class="md-nav__icon md-icon"></span>
         </label>
       
       <nav class="md-nav" aria-label="Event Handler" data-md-level="2">
-        <label class="md-nav__title" for="__nav_6_4">
+        <label class="md-nav__title" for="__nav_8_4">
           <span class="md-nav__icon md-icon"></span>
           Event Handler
         </label>
@@ -499,7 +518,7 @@
     <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7" type="checkbox" id="__nav_7" checked>
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_9" type="checkbox" id="__nav_9" checked>
       
       
       
@@ -528,13 +547,13 @@
         
       
       
-        <label class="md-nav__link" for="__nav_7">
+        <label class="md-nav__link" for="__nav_9">
           Utilities
           <span class="md-nav__icon md-icon"></span>
         </label>
       
       <nav class="md-nav" aria-label="Utilities" data-md-level="1">
-        <label class="md-nav__title" for="__nav_7">
+        <label class="md-nav__title" for="__nav_9">
           <span class="md-nav__icon md-icon"></span>
           Utilities
         </label>
@@ -743,7 +762,7 @@
   
     <li class="md-nav__item">
       <a href="../parser/" class="md-nav__link">
-        Parser
+        Parser (Pydantic)
       </a>
     </li>
   
@@ -1011,12 +1030,18 @@
 <span class="normal">44</span>
 <span class="normal">45</span>
 <span class="normal">46</span>
-<span class="normal">47</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span> <span class="nn">dataclasses</span> <span class="kn">import</span> <span class="n">dataclass</span><span class="p">,</span> <span class="n">field</span>
+<span class="normal">47</span>
+<span class="normal">48</span>
+<span class="normal">49</span>
+<span class="normal">50</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span> <span class="nn">dataclasses</span> <span class="kn">import</span> <span class="n">dataclass</span><span class="p">,</span> <span class="n">field</span>
 <span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Callable</span>
 <span class="kn">from</span> <span class="nn">uuid</span> <span class="kn">import</span> <span class="n">uuid4</span>
 
 <span class="hll"><span class="kn">from</span> <span class="nn">aws_lambda_powertools.middleware_factory</span> <span class="kn">import</span> <span class="n">lambda_handler_decorator</span>
-</span><span class="kn">from</span> <span class="nn">aws_lambda_powertools.utilities.jmespath_utils</span> <span class="kn">import</span> <span class="n">envelopes</span><span class="p">,</span> <span class="n">extract_data_from_envelope</span>
+</span><span class="kn">from</span> <span class="nn">aws_lambda_powertools.utilities.jmespath_utils</span> <span class="kn">import</span> <span class="p">(</span>
+    <span class="n">envelopes</span><span class="p">,</span>
+    <span class="n">extract_data_from_envelope</span><span class="p">,</span>
+<span class="p">)</span>
 <span class="kn">from</span> <span class="nn">aws_lambda_powertools.utilities.typing</span> <span class="kn">import</span> <span class="n">LambdaContext</span>
 
 
@@ -1253,13 +1278,19 @@
 <span class="normal">55</span>
 <span class="normal">56</span>
 <span class="normal">57</span>
-<span class="normal">58</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">import</span> <span class="nn">base64</span>
+<span class="normal">58</span>
+<span class="normal">59</span>
+<span class="normal">60</span>
+<span class="normal">61</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">import</span> <span class="nn">base64</span>
 <span class="kn">from</span> <span class="nn">dataclasses</span> <span class="kn">import</span> <span class="n">dataclass</span><span class="p">,</span> <span class="n">field</span>
 <span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Any</span><span class="p">,</span> <span class="n">Callable</span><span class="p">,</span> <span class="n">List</span>
 <span class="kn">from</span> <span class="nn">uuid</span> <span class="kn">import</span> <span class="n">uuid4</span>
 
 <span class="hll"><span class="kn">from</span> <span class="nn">aws_lambda_powertools.middleware_factory</span> <span class="kn">import</span> <span class="n">lambda_handler_decorator</span>
-</span><span class="kn">from</span> <span class="nn">aws_lambda_powertools.utilities.jmespath_utils</span> <span class="kn">import</span> <span class="n">envelopes</span><span class="p">,</span> <span class="n">extract_data_from_envelope</span>
+</span><span class="kn">from</span> <span class="nn">aws_lambda_powertools.utilities.jmespath_utils</span> <span class="kn">import</span> <span class="p">(</span>
+    <span class="n">envelopes</span><span class="p">,</span>
+    <span class="n">extract_data_from_envelope</span><span class="p">,</span>
+<span class="p">)</span>
 <span class="kn">from</span> <span class="nn">aws_lambda_powertools.utilities.typing</span> <span class="kn">import</span> <span class="n">LambdaContext</span>
 
 
@@ -2333,7 +2364,7 @@
   <small>
     
       Last update:
-      2022-08-25
+      2022-10-05
     
   </small>
 </div>
@@ -2419,10 +2450,10 @@
       <div class="md-dialog__inner md-typeset"></div>
     </div>
     
-    <script id="__config" type="application/json">{"base": "../..", "features": ["header.autohide", "navigation.sections", "navigation.expand", "navigation.top", "navigation.instant", "navigation.indexes", "navigation.tracking", "content.code.annotate"], "search": "../../assets/javascripts/workers/search.ecf98df9.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "version": {"default": "latest", "provider": "mike"}}</script>
+    <script id="__config" type="application/json">{"base": "../..", "features": ["header.autohide", "navigation.sections", "navigation.expand", "navigation.top", "navigation.instant", "navigation.indexes", "navigation.tracking", "content.code.annotate"], "search": "../../assets/javascripts/workers/search.16e2a7d4.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "version": {"default": "latest", "provider": "mike"}}</script>
     
     
-      <script src="../../assets/javascripts/bundle.48f2be22.min.js"></script>
+      <script src="../../assets/javascripts/bundle.8492ddcf.min.js"></script>
       
         <script src="../../javascript/aws-amplify.min.js"></script>
       
