@@ -77,7 +77,7 @@ def default_jmespath():
 
 
 @pytest.fixture
-def expected_params_update_item(serialized_lambda_response, hashed_idempotency_keyx):
+def expected_params_update_item(serialized_lambda_response, hashed_idempotency_key):
     return {
         "ExpressionAttributeNames": {
             "#expiry": "expiration",

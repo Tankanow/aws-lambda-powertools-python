@@ -146,7 +146,6 @@ class DynamoDBPersistenceLayer(BasePersistenceLayer):
     def _put_record(self, data_record: DataRecord) -> None:
         item = {
             **self._get_key(data_record.idempotency_key),
-            self.key_attr: {"S": data_record.idempotency_key},
             self.expiry_attr: {"N": str(data_record.expiry_timestamp)},
             self.status_attr: {"S": data_record.status},
         }
