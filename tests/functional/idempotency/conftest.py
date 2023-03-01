@@ -77,7 +77,7 @@ def default_jmespath():
 
 
 @pytest.fixture
-def expected_params_update_item(serialized_lambda_response, hashed_idempotency_key):
+def expected_params_update_item(serialized_lambda_response, hashed_idempotency_keyx):
     return {
         "ExpressionAttributeNames": {
             "#expiry": "expiration",
@@ -90,6 +90,27 @@ def expected_params_update_item(serialized_lambda_response, hashed_idempotency_k
             ":status": {"S": "COMPLETED"},
         },
         "Key": {"id": {"S": hashed_idempotency_key}},
+        "TableName": "TEST_TABLE",
+        "UpdateExpression": "SET #response_data = :response_data, " "#expiry = :expiry, #status = :status",
+    }
+
+
+@pytest.fixture
+def expected_params_update_item_compound_key_static_pk_value(
+    serialized_lambda_response, hashed_idempotency_key, static_pk_value
+):
+    return {
+        "ExpressionAttributeNames": {
+            "#expiry": "expiration",
+            "#response_data": "data",
+            "#status": "status",
+        },
+        "ExpressionAttributeValues": {
+            ":expiry": {"N": stub.ANY},
+            ":response_data": {"S": serialized_lambda_response},
+            ":status": {"S": "COMPLETED"},
+        },
+        "Key": {"id": {"S": static_pk_value}, "sk": {"S": hashed_idempotency_key}},
         "TableName": "TEST_TABLE",
         "UpdateExpression": "SET #response_data = :response_data, " "#expiry = :expiry, #status = :status",
     }
@@ -151,6 +172,35 @@ def expected_params_put_item(hashed_idempotency_key):
 
 
 @pytest.fixture
+def expected_params_put_item_compound_key_static_pk_value(hashed_idempotency_key, static_pk_value):
+    return {
+        "ConditionExpression": (
+            "attribute_not_exists(#id) OR #expiry < :now OR "
+            "(#status = :inprogress AND attribute_exists(#in_progress_expiry) AND #in_progress_expiry < :now_in_millis)"
+        ),
+        "ExpressionAttributeNames": {
+            "#id": "id",
+            "#expiry": "expiration",
+            "#status": "status",
+            "#in_progress_expiry": "in_progress_expiration",
+        },
+        "ExpressionAttributeValues": {
+            ":now": {"N": stub.ANY},
+            ":now_in_millis": {"N": stub.ANY},
+            ":inprogress": {"S": "INPROGRESS"},
+        },
+        "Item": {
+            "expiration": {"N": stub.ANY},
+            "in_progress_expiration": {"N": stub.ANY},
+            "id": {"S": static_pk_value},
+            "sk": {"S": hashed_idempotency_key},
+            "status": {"S": "INPROGRESS"},
+        },
+        "TableName": "TEST_TABLE",
+    }
+
+
+@pytest.fixture
 def expected_params_put_item_with_validation(hashed_idempotency_key, hashed_validation_key):
     return {
         "ConditionExpression": (
@@ -201,6 +251,11 @@ def hashed_idempotency_key_with_envelope(request, lambda_apigw_event):
 
 
 @pytest.fixture
+def static_pk_value():
+    return "static-value"
+
+
+@pytest.fixture
 def hashed_validation_key(lambda_apigw_event):
     return hash_idempotency_key(lambda_apigw_event["requestContext"])
 
@@ -213,6 +268,13 @@ def persistence_store(config):
 @pytest.fixture
 def persistence_store_compound(config):
     return DynamoDBPersistenceLayer(table_name=TABLE_NAME, boto_config=config, key_attr="id", sort_key_attr="sk")
+
+
+@pytest.fixture
+def persistence_store_compound_static_pk_value(config, static_pk_value):
+    return DynamoDBPersistenceLayer(
+        table_name=TABLE_NAME, boto_config=config, key_attr="id", sort_key_attr="sk", static_pk_value=static_pk_value
+    )
 
 
 @pytest.fixture
