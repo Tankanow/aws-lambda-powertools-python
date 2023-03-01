@@ -97,22 +97,11 @@ def expected_params_update_item(serialized_lambda_response, hashed_idempotency_k
 
 @pytest.fixture
 def expected_params_update_item_compound_key_static_pk_value(
-    serialized_lambda_response, hashed_idempotency_key, static_pk_value
+    expected_params_update_item, hashed_idempotency_key, static_pk_value
 ):
     return {
-        "ExpressionAttributeNames": {
-            "#expiry": "expiration",
-            "#response_data": "data",
-            "#status": "status",
-        },
-        "ExpressionAttributeValues": {
-            ":expiry": {"N": stub.ANY},
-            ":response_data": {"S": serialized_lambda_response},
-            ":status": {"S": "COMPLETED"},
-        },
+        **expected_params_update_item,
         "Key": {"id": {"S": static_pk_value}, "sk": {"S": hashed_idempotency_key}},
-        "TableName": "TEST_TABLE",
-        "UpdateExpression": "SET #response_data = :response_data, " "#expiry = :expiry, #status = :status",
     }
 
 
@@ -172,23 +161,11 @@ def expected_params_put_item(hashed_idempotency_key):
 
 
 @pytest.fixture
-def expected_params_put_item_compound_key_static_pk_value(hashed_idempotency_key, static_pk_value):
+def expected_params_put_item_compound_key_static_pk_value(
+    expected_params_put_item, hashed_idempotency_key, static_pk_value
+):
     return {
-        "ConditionExpression": (
-            "attribute_not_exists(#id) OR #expiry < :now OR "
-            "(#status = :inprogress AND attribute_exists(#in_progress_expiry) AND #in_progress_expiry < :now_in_millis)"
-        ),
-        "ExpressionAttributeNames": {
-            "#id": "id",
-            "#expiry": "expiration",
-            "#status": "status",
-            "#in_progress_expiry": "in_progress_expiration",
-        },
-        "ExpressionAttributeValues": {
-            ":now": {"N": stub.ANY},
-            ":now_in_millis": {"N": stub.ANY},
-            ":inprogress": {"S": "INPROGRESS"},
-        },
+        **expected_params_put_item,
         "Item": {
             "expiration": {"N": stub.ANY},
             "in_progress_expiration": {"N": stub.ANY},
@@ -196,7 +173,6 @@ def expected_params_put_item_compound_key_static_pk_value(hashed_idempotency_key
             "sk": {"S": hashed_idempotency_key},
             "status": {"S": "INPROGRESS"},
         },
-        "TableName": "TEST_TABLE",
     }
 
 
